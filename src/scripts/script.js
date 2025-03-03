@@ -4,6 +4,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
     const cityName = document.querySelector('#city_name').value;
 
     if (!cityName) {
+        document.querySelector("#weather").classList.remove('show');
         showAlert('Você precisa digitar uma cidade...');
         return;
     }
@@ -27,6 +28,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             humidity: json.main.humidity,
         });
     } else {
+        document.querySelector("#weather").classList.remove('show');
         showAlert(`Cidade não encontrada...
 
             <img src="src/img/notFound.svg" alt="Cidade não encontrada">
