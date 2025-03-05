@@ -1,10 +1,10 @@
-document.querySelector('#search').addEventListener('submit', async (event) => {
+document.querySelector('#db9-search').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const cityName = document.querySelector('#city_name').value;
+    const cityName = document.querySelector('#db9-city_name').value;
 
     if (!cityName) {
-        document.querySelector("#weather").classList.remove('show');
+        document.querySelector("#db9-weather").classList.remove('show');
         showAlert('Você precisa digitar uma cidade...');
         return;
     }
@@ -28,7 +28,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             humidity: json.main.humidity,
         });
     } else {
-        document.querySelector("#weather").classList.remove('show');
+        document.querySelector("#db9-weather").classList.remove('show');
         showAlert(`Cidade não encontrada...
 
             <img src="src/img/notFound.svg" alt="Cidade não encontrada">
@@ -39,20 +39,20 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
 function showInfo(json){
     showAlert('');
 
-    document.querySelector("#weather").classList.add('show');
+    document.querySelector("#db9-weather").classList.add('show');
 
-    document.querySelector('#title').innerHTML = `${json.city}, ${json.country}`;
+    document.querySelector('#db9-title').innerHTML = `${json.city}, ${json.country}`;
 
-    document.querySelector('#temp_value').innerHTML = `${json.temp.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
-    document.querySelector('#temp_description').innerHTML = `${json.description}`;
-    document.querySelector('#temp_img').setAttribute('src', `https://openweathermap.org/img/wn/${json.tempIcon}@2x.png`)
+    document.querySelector('#db9-temp_value').innerHTML = `${json.temp.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
+    document.querySelector('#db9-temp_description').innerHTML = `${json.description}`;
+    document.querySelector('#db9-temp_img').setAttribute('src', `https://openweathermap.org/img/wn/${json.tempIcon}@2x.png`)
 
-    document.querySelector('#temp_max').innerHTML = `${json.tempMax.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
-    document.querySelector('#temp_min').innerHTML = `${json.tempMin.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
-    document.querySelector('#humidity').innerHTML = `${json.humidity}%`;
-    document.querySelector('#wind').innerHTML = `${json.windSpeed.toFixed(1)}km/h`;
+    document.querySelector('#db9-temp_max').innerHTML = `${json.tempMax.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
+    document.querySelector('#db9-temp_min').innerHTML = `${json.tempMin.toFixed(1).toString().replace('.', ',')} <sup>C°</sup>`;
+    document.querySelector('#db9-humidity').innerHTML = `${json.humidity}%`;
+    document.querySelector('#db9-wind').innerHTML = `${json.windSpeed.toFixed(1)}km/h`;
 }
 
 function showAlert(msg) {
-    document.querySelector('#alert').innerHTML = msg;
+    document.querySelector('#db9-alert').innerHTML = msg;
 }
